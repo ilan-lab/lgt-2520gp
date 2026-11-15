@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /_work/
+Sitemap: https://i-group.co.il/lgt-2520gp/sitemap.xml
