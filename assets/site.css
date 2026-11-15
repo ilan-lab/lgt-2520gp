@@ -186,3 +186,23 @@ form .btn{width:100%;margin-top:6px}
 .vframe{max-width:1000px;margin:0 auto;border-radius:24px;overflow:hidden;background:#000;box-shadow:0 30px 70px -30px rgba(10,31,68,.45),0 0 0 1px rgba(10,31,68,.06);aspect-ratio:16/9}
 .vframe video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
 .certs .badge{flex:1 1 220px}
+/* hero: image first */
+.hero-tx{display:flex;flex-direction:column;align-items:flex-start}
+@media(max-width:899px){
+  .hero{padding-top:calc(var(--hh) + 8px)}
+  .hero-g{gap:6px}
+  .hero-img{width:100%;max-width:none;aspect-ratio:auto;height:min(46vh,400px);display:flex;justify-content:center}
+  .hero-img img{width:auto;height:100%}
+  .hero-img::before{inset:10% 8% 0}
+  .hero-tx .eyebrow{margin-bottom:8px}
+  .hero h1{font-size:clamp(32px,9vw,44px);margin-bottom:16px}
+  .hero-tx .ctas{order:3;width:100%}
+  .hero-tx .lead{order:4;margin:22px 0 0}
+  .hero-tx .trust{order:5}
+}
+@media(min-width:900px){
+  .hero-g{grid-template-columns:1.05fr .95fr;gap:56px}
+  .hero-img{max-width:560px;width:100%;justify-self:center}
+}
+@media(min-width:900px){.hero h1{font-size:clamp(44px,4.6vw,62px)}}
+@media(min-width:900px){.hero h1{font-size:clamp(40px,3.8vw,56px)}.hero h1 em{white-space:nowrap}}
