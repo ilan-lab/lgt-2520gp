@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /_work/
-Sitemap: https://ilan-lab.github.io/lgt-2520gp/sitemap.xml
+Sitemap: https://focused.i-group.co.il/sitemap.xml
