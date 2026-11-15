@@ -351,7 +351,7 @@
         <label>שם הקליניקה<input name="clinic" autocomplete="organization" required maxlength="100" placeholder="שם הקליניקה או המכון"></label>
         <p class="err" id="ferr" role="alert" aria-live="polite"></p>
         <button class="btn btn-wa" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>שליחה בוואטסאפ</button>
-        <p class="small">הלחיצה פותחת את וואטסאפ עם הפרטים שמילאתם. ההודעה נשלחת רק אחרי שתלחצו "שליחה" בוואטסאפ.</p>
+        <p class="small">הפרטים נשלחים לצוות <span class="nw">I-Group</span>, והלחיצה גם פותחת את וואטסאפ עם הפרטים שמילאתם.</p>
       </form>
     </div>
   </div>
@@ -375,7 +375,7 @@
 
 <script>
 (function(){
-  var WA='972549007723';
+  var WA='972549007723',HOOK='https://hook.eu1.make.com/alx57e4x121sgsi3g3tux2mq7e4jnsn8';
   var hdr=document.getElementById('hdr'),mbar=document.getElementById('mbar'),ticking=false;
   function onS(){var y=window.scrollY||0;hdr.classList.toggle('sc',y>8);mbar.classList.toggle('on',y>window.innerHeight*.9&&!nearLead());ticking=false}
   var leadEl=document.getElementById('lead');
@@ -395,6 +395,13 @@
     if(c.length<2){err.textContent='נא למלא את שם הקליניקה';E['clinic'].focus();return}
     err.textContent='';
     var msg='שלום, אשמח לקבל פרטים על מכשיר גלי ההלם הממוקדים LGT-2520GP.\nשם: '+n+'\nטלפון: '+E['phone'].value.trim()+'\nקליניקה: '+c;
+    try{
+      var fd=new URLSearchParams();
+      fd.append('name',n);fd.append('phone',E['phone'].value.trim());fd.append('clinic',c);
+      if(E['message'])fd.append('message',E['message'].value.trim());
+      fd.append('page',location.href);fd.append('referrer',document.referrer||'');fd.append('ts',new Date().toISOString());fd.append('form','lgt-2520gp-lead');
+      fetch(HOOK,{method:'POST',mode:'no-cors',keepalive:true,body:fd}).catch(function(){});
+    }catch(_){}
     window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
   });
 
